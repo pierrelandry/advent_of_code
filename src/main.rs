@@ -4,10 +4,9 @@ use std::fs;
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let filename = &args[1];
-    println!("This is the filename {}", filename);
+    let config = Config::new(&args);
 
-    let files_contents = fs::read_to_string(filename).expect("Something went wrong reading the file");
+    let files_contents = fs::read_to_string(config.filename).expect("Something went wrong reading the file");
 
     let mut str_vec: Vec<&str> = files_contents.split("\n").collect();
     // remove the last line
@@ -28,3 +27,16 @@ fn main() {
     }
     println!("The number of increases is {:?}", measurement_inc);
 }
+
+struct Config {
+    filename: String,
+}
+
+impl Config {
+    fn new(args: &Vec<String>) -> Config {
+        let filename = args[1].clone();
+
+        Config { filename }
+    }
+}
+
