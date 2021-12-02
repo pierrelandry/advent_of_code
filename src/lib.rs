@@ -18,18 +18,22 @@ pub fn run(config: Config) -> Result<i32, Box<dyn Error>> {
 
     let mut x: i32 = 0;
     let mut y: i32 = 0;
+    let mut aim = 0;
 
     for tuple in tuple_vecs {
         if tuple.0.eq("forward") {
             x = x + tuple.1;
+            y = y + aim * tuple.1;
         }
 
         if tuple.0.eq("down") {
-            y = y + tuple.1;
+            //y = y + tuple.1;
+            aim = aim + tuple.1
         }
 
         if tuple.0.eq("up") {
-            y = y - tuple.1;
+            //y = y - tuple.1;
+            aim = aim - tuple.1;
         }
     }
 
