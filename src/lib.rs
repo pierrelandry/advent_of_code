@@ -16,8 +16,11 @@ pub fn run(config: Config) -> Result<i32, Box<dyn Error>> {
 
     // Count the number of increases
     let mut measurement_inc = 0;
-    for i in 0..int_vecs.len() - 1 {
-        if (int_vecs[i + 1] - int_vecs[i]) > 0 {
+    for i in 0..int_vecs.len() - 3 {
+        let right = int_vecs[i + 1] + int_vecs[i + 2] + int_vecs[i + 3];
+        let left = int_vecs[i] + int_vecs[i + 1] + int_vecs[i + 2];
+
+        if (right - left) > 0 {
             measurement_inc = measurement_inc + 1;
         }
     }
