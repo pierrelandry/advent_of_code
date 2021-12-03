@@ -10,11 +10,11 @@ fn main() {
         process::exit(1);
     });
 
-    let increases_count = run(config).unwrap_or_else(|err| {
+    let product = run(config).unwrap_or_else(|err| {
         println!("Application error: {}", err);
         process::exit(1);
     });
 
-    println!("The number of increases is {:?}", increases_count);
+    println!("The product is {:?}", product);
 }
 
